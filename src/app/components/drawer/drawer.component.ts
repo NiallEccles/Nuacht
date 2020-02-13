@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { OverlayService } from "src/app/services/overlay/overlay.service";
 import { DrawerService } from "src/app/services/drawer/drawer.service";
+import { timer } from 'rxjs';
 
 @Component({
   selector: "app-drawer",
@@ -8,6 +9,7 @@ import { DrawerService } from "src/app/services/drawer/drawer.service";
   styleUrls: ["./drawer.component.scss"]
 })
 export class DrawerComponent implements OnInit {
+  public activeHover: string;
   public isClosed: boolean;
   public categories = [
     {
@@ -63,6 +65,7 @@ export class DrawerComponent implements OnInit {
 
   public toggleDrawer() {
     this.isClosed = !this.isClosed;
+    this.activeHover = "";
   }
 
   public openOverlay() {
@@ -81,5 +84,11 @@ export class DrawerComponent implements OnInit {
         i => i.name === "Minimal"
       ).value
     );
+  }
+  public hover(event){
+    this.activeHover = event.toElement.id;
+    // timer(1500).subscribe(t=>{
+    //   this.activeHover = ""
+    // });
   }
 }

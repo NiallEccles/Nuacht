@@ -16,9 +16,12 @@
         <i *ngIf="!isClosed" class="material-icons">
           keyboard_arrow_right
         </i>
-        <i *ngIf="isClosed" class="material-icons">
+        <i [id]="category.name" *ngIf="isClosed" class="material-icons" (mouseenter)="hover($event)">
           {{ category.icon }}
         </i>
+        <div *ngIf="activeHover === category.name" class="active-hover">
+          {{category.name}}
+        </div>
       </li>
     </ol>
   </div>
