@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { OverlayService } from "src/app/services/overlay/overlay.service";
 import { DrawerService } from "src/app/services/drawer/drawer.service";
 import { ThemeService } from "src/app/services/theme/theme.service";
+import { PreferencesService } from 'src/app/services/preferences/preferences.service';
 
 @Component({
   selector: "app-overlay",
@@ -12,7 +13,8 @@ export class OverlayComponent implements OnInit {
   constructor(
     public overlayService: OverlayService,
     public drawerService: DrawerService,
-    public themeService: ThemeService
+    public themeService: ThemeService,
+    public preferencesService: PreferencesService
   ) {}
 
   public defaults: any;
@@ -21,27 +23,8 @@ export class OverlayComponent implements OnInit {
   public filters: any;
 
   ngOnInit() {
-    this.defaults = [
-      { name: "Dark Mode", value: false },
-      { name: "Minimal", value: false }
-    ];
-    this.filters = [
-      { name: "The Irish Times", blocked: false },
-      { name: "Theguardian.com", blocked: false },
-      { name: "Independent.ie", blocked: false },
-      { name: "Thejournal.ie", blocked: false },
-      { name: "Livescience.com", blocked: false },
-      { name: "Bbc.com", blocked: false },
-      { name: "Geneticliteracyproject.org", blocked: false },
-      { name: "RTE", blocked: false },
-      { name: "CNN", blocked: false },
-      { name: "Thesun.ie", blocked: false },
-      { name: "Breakingnews.ie", blocked: false },
-      { name: "Irishexaminer.com", blocked: false },
-      { name: "Outbreaknewstoday.com", blocked: false }
-    ];
-    this.getSettings();
-    this.getFilters();
+    this.defaults = this.preferencesService.getDefaults();
+    this.filters = this.preferencesService.getFilters();
   }
 
   public closeOverlay() {
@@ -49,46 +32,11 @@ export class OverlayComponent implements OnInit {
   }
 
   updateSettings(value, name) {
-    const index = this.defaults.indexOf(
-      this.defaults.find(i => i.name === name)
-    );
-    const local = this.getStorage();
-    local[index].value = value;
-    this.setStorage(local);
-    switch (name) {
-      case "Minimal":
-        this.drawerService.toggleDrawer(value);
-        break;
-      case "Dark Mode":
-        this.themeService.toggleTheme(value);
-      default:
-        break;
-    }
+    this.preferencesService.updateDefaults({value, name})
   }
 
   updateFilters(value, name) {
-    const item = JSON.parse(localStorage.getItem("filters")).find(
-      i => i.name === name
-    );
-    item.value = value;
-    this.filters.find(i => i.name === name).blocked = value;
-    localStorage.setItem("filters", JSON.stringify(this.filters));
-  }
-
-  getSettings() {
-    if (localStorage.getItem("settings")) {
-      this.defaults = this.getStorage();
-    } else {
-      this.setStorage(this.defaults);
-    }
-  }
-
-  getFilters() {
-    if (localStorage.getItem("filters")) {
-      this.filters = JSON.parse(localStorage.getItem("filters"));
-    } else {
-      localStorage.setItem("filters", JSON.stringify(this.filters));
-    }
+    this.preferencesService.updateFilters({value, name});
   }
 
   getStorage() {

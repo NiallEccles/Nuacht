@@ -7,6 +7,7 @@ import { DrawerComponent } from './components/drawer/drawer.component';
 import { OverlayComponent } from './components/overlay/overlay.component';
 import { SwitchComponent } from './components/switch/switch.component';
 import { ToggleComponent } from './components/toggle/toggle.component';
+import { PreferencesService } from './services/preferences/preferences.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { ToggleComponent } from './components/toggle/toggle.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [PreferencesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

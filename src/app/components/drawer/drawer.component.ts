@@ -52,9 +52,13 @@ export class DrawerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isClosed = JSON.parse(localStorage.getItem("settings")).find(
-      i => i.name === "Minimal"
-    ).value;
+    if(localStorage.getItem("settings")){
+      this.isClosed = JSON.parse(localStorage.getItem("settings")).find(
+        i => i.name === "Minimal"
+      ).value;
+    } else {
+      this.isClosed = false;
+    }
   }
 
   public toggleDrawer() {

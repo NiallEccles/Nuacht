@@ -21,10 +21,14 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     // this.overlayService.toggleOverlay(true);
-    this.themeService.toggleTheme(
-      JSON.parse(localStorage.getItem("settings")).find(
-        i => i.name === "Dark Mode"
-      ).value
-    );
+    if(localStorage.getItem("settings")){
+      this.themeService.toggleTheme(
+        JSON.parse(localStorage.getItem("settings")).find(
+          i => i.name === "Dark Mode"
+        ).value
+      );
+    } else {
+      this.themeService.toggleTheme(false);
+    }
   }
 }
