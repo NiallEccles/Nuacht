@@ -11,12 +11,12 @@
   <hr />
   <div class="inner">
     <ol>
-      <li *ngFor="let category of categories">
+      <li *ngFor="let category of categories" (mouseenter)="setHover($event)" [id]="category.name" (mouseleave)="clearHover()">
         <span *ngIf="!isClosed">{{ category.name }}</span>
         <i *ngIf="!isClosed" class="material-icons">
           keyboard_arrow_right
         </i>
-        <i [id]="category.name" *ngIf="isClosed" class="material-icons" (mouseenter)="hover($event)">
+        <i *ngIf="isClosed" class="material-icons">
           {{ category.icon }}
         </i>
         <div *ngIf="activeHover === category.name" class="active-hover">

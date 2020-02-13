@@ -65,7 +65,6 @@ export class DrawerComponent implements OnInit {
 
   public toggleDrawer() {
     this.isClosed = !this.isClosed;
-    this.activeHover = "";
   }
 
   public openOverlay() {
@@ -85,10 +84,10 @@ export class DrawerComponent implements OnInit {
       ).value
     );
   }
-  public hover(event){
+  public setHover(event){
     this.activeHover = event.toElement.id;
-    // timer(1500).subscribe(t=>{
-    //   this.activeHover = ""
-    // });
+  }
+  public clearHover(){
+    this.activeHover = "";
   }
 }
