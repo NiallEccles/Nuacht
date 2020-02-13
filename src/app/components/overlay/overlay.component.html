@@ -1,0 +1,30 @@
+<div class="overlay" (click)="closeOverlay()"></div>
+<div class="overlay-content">
+  <div class="leading">
+    <p>Settings</p>
+    <i class="material-icons" (click)="closeOverlay()">
+      close
+    </i>
+  </div>
+  <hr />
+  <div class="options">
+    <div class="option" *ngFor="let option of defaults">
+      <p>{{ option.name }}</p>
+      <toggle
+        [on]="option.value"
+        (toggled)="updateSettings($event, option.name)"
+      ></toggle>
+    </div>
+  </div>
+  <p>Filters</p>
+  <hr />
+  <div class="filters">
+    <div class="filter" *ngFor="let filter of filters">
+      <p>{{ filter.name }}</p>
+      <toggle
+        [on]="filter.blocked"
+        (toggled)="updateFilters($event, filter.name)"
+      ></toggle>
+    </div>
+  </div>
+</div>

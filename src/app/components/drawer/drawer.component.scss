@@ -1,0 +1,84 @@
+.container {
+  font-family: "Montserrat", sans-serif;
+  background: var(--headline);
+  color: var(--button-text);
+  width: 22em;
+  height: calc(100vh - 2em);
+  padding: 1em;
+  position: relative;
+  transition: all 300ms ease-in-out;
+  &.close {
+    width: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 300ms ease-in-out;
+    h1 {
+      margin-bottom: 0.5em;
+    }
+    hr {
+      margin-top: 1.5em;
+      width: 2em;
+    }
+    .title {
+      flex-direction: column;
+    }
+    .action {
+      left: 50%;
+      transform: translate(-50%);
+    }
+  }
+  .title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    .leading {
+      display: flex;
+      justify-content: space-between;
+    }
+    .leading > i:hover {
+      cursor: pointer;
+    }
+  }
+  h1 {
+    margin: 0;
+  }
+  .inner {
+    // margin-top: 2em;
+  }
+  ol {
+    list-style: none;
+    padding: 0;
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      // margin-top: 1.5em;
+      padding: 1em 0;
+    }
+    li:hover {
+      border-bottom: 2px solid var(--button-text);
+      margin-bottom: -2px;
+      cursor: pointer;
+    }
+  }
+  .action {
+    position: absolute;
+    right: -1.3em;
+    bottom: 2em;
+    span {
+      visibility: hidden;
+    }
+    button {
+      padding: 1em;
+      border: none;
+      border-radius: 2em;
+      background: var(--headline);
+      color: var(--button-text);
+    }
+    button:hover {
+      cursor: pointer;
+    }
+  }
+}

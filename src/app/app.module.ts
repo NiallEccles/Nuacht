@@ -3,10 +3,18 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DrawerComponent } from './components/drawer/drawer.component';
+import { OverlayComponent } from './components/overlay/overlay.component';
+import { SwitchComponent } from './components/switch/switch.component';
+import { ToggleComponent } from './components/toggle/toggle.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DrawerComponent,
+    OverlayComponent,
+    SwitchComponent,
+    ToggleComponent
   ],
   imports: [
     BrowserModule,

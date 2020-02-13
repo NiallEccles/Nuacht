@@ -1,0 +1,36 @@
+<div class="container" [ngClass]="{ close: isClosed }">
+  <div class="title">
+    <h1 *ngIf="!isClosed">Nuacht</h1>
+    <h1 *ngIf="isClosed">N</h1>
+    <div class="leading">
+      <i class="material-icons" (click)="openOverlay()">
+        settings
+      </i>
+    </div>
+  </div>
+  <hr />
+  <div class="inner">
+    <ol>
+      <li *ngFor="let category of categories">
+        <span *ngIf="!isClosed">{{ category.name }}</span>
+        <i *ngIf="!isClosed" class="material-icons">
+          keyboard_arrow_right
+        </i>
+        <i *ngIf="isClosed" class="material-icons">
+          {{ category.icon }}
+        </i>
+      </li>
+    </ol>
+  </div>
+  <div class="action">
+    <span>Minimize</span>
+    <button (click)="toggleDrawer()">
+      <i *ngIf="isClosed" class="material-icons">
+        keyboard_arrow_right
+      </i>
+      <i *ngIf="!isClosed" class="material-icons">
+        close
+      </i>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+.overlay {
+  background: var(--paragraph);
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 2;
+  opacity: 0.8;
+}
+.overlay-content {
+  height: 25em;
+  overflow: scroll;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  font-family: "Montserrat", sans-serif;
+  background: var(--background);
+  color: var(--paragraph);
+  width: 35em;
+  padding: 2em;
+  transform: translate(calc(-50% - 1em), -50%);
+  hr {
+    border-top: 0.1em solid var(--paragraph);
+  }
+  .leading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .options, .filters {
+    margin-top: 1em;
+    .option, .filter {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+}
