@@ -27,7 +27,16 @@ export class PreferencesService {
     { name: "Thesun.ie", blocked: false },
     { name: "Breakingnews.ie", blocked: false },
     { name: "Irishexaminer.com", blocked: false },
-    { name: "Outbreaknewstoday.com", blocked: false }
+    { name: "Outbreaknewstoday.com", blocked: false },
+    { name: "Dailysabah.com", blocked: false },
+    { name: "The42.ie", blocked: false },
+    { name: "Extra.ie", blocked: false },
+    { name: "Irishmirror.ie", blocked: false },
+    { name: "Google News", blocked: false },
+    { name: "Dublinlive.ie", blocked: false },
+    { name: "The Verge", blocked: false },
+    { name: "Notebookcheck.net", blocked: false },
+    { name: "Sciencealert.com", blocked: false },
   ];
 
   constructor(
@@ -75,7 +84,10 @@ export class PreferencesService {
         break;
       case "Dark Mode":
         this.themeService.toggleTheme(item.value);
+        break;
       default:
+        this.drawerService.toggleDrawer(false);
+        this.themeService.toggleTheme(false);
         break;
     }
   }
