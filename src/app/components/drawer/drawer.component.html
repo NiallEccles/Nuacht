@@ -19,7 +19,7 @@
         <i *ngIf="isClosed" class="material-icons">
           {{ category.icon }}
         </i>
-        <div *ngIf="activeHover === category.name" class="active-hover">
+        <div *ngIf="activeHover === category.name && isClosed" class="active-hover">
           {{category.name}}
         </div>
       </li>
