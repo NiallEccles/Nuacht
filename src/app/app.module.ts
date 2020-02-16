@@ -8,6 +8,8 @@ import { OverlayComponent } from './components/overlay/overlay.component';
 import { SwitchComponent } from './components/switch/switch.component';
 import { ToggleComponent } from './components/toggle/toggle.component';
 import { PreferencesService } from './services/preferences/preferences.service';
+import { ReaderComponent } from './components/reader/reader.component';
+import { RemoveSrc } from './pipes/removeSrc.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { PreferencesService } from './services/preferences/preferences.service';
     DrawerComponent,
     OverlayComponent,
     SwitchComponent,
-    ToggleComponent
+    ToggleComponent,
+    ReaderComponent,
+    RemoveSrc
   ],
   imports: [
     BrowserModule,

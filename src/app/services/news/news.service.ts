@@ -364,9 +364,11 @@ export class NewsService {
   private filters;
   constructor(public preferenceService: PreferencesService) {
     this.filters = this.preferenceService.getStorage("filters");
+    console.log(this.news);
+    
   }
 
-  public async getNews() {
+  public getNews() {
     const filtered = [];
     this.news.articles.filter(article => {
       return this.filters.filter(filter => {
@@ -377,5 +379,6 @@ export class NewsService {
         }
       });
     });
+    return filtered;
   }
 }

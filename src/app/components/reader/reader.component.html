@@ -1,0 +1,16 @@
+<div class="reader">
+  <ol>
+    <li *ngFor="let article of data" (click)="test1(article)">
+      <article>
+        <div class="content">
+          <h2>{{ article.title | removeSrc }}</h2>
+          <h3>{{ article.source.name }}</h3>
+        </div>
+        <div class="tooltip trailing">
+          <i class="material-icons" (click)="test2(article, $event)">watch_later</i>
+          <!-- <span class="tooltiptext">Read Later</span> -->
+        </div>
+      </article>
+    </li>
+  </ol>
+</div>

@@ -13,6 +13,11 @@ export class DrawerComponent implements OnInit {
   public isClosed: boolean;
   public categories = [
     {
+      id: 0,
+      name: "All",
+      icon: "public"
+    },
+    {
       id: 1,
       name: "Business",
       icon: "business"
