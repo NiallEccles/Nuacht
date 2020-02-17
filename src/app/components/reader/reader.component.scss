@@ -21,6 +21,9 @@
         h2 {
           text-decoration: underline;
         }
+        .trailing {
+          visibility: visible;
+        }
       }
     }
   }
@@ -29,6 +32,15 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    .trailing {
+      visibility: hidden;
+    }
+    .leading {
+      width: 2em;
+      img {
+        width: 100%;
+      }
+    }
     h3 {
       color: var(--button);
     }

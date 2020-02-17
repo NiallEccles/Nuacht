@@ -14,8 +14,13 @@ export class DrawerComponent implements OnInit {
   public categories = [
     {
       id: 0,
+      name: "Read Later",
+      icon: "watch_later"
+    },
+    {
+      id: 0,
       name: "All",
-      icon: "public"
+      icon: "dynamic_feed"
     },
     {
       id: 1,

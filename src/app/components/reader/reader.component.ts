@@ -9,6 +9,7 @@ import { NewsService } from 'src/app/services/news/news.service';
 export class ReaderComponent implements OnInit {
 
   public data;
+  public currentItem;
 
   constructor(public newsService: NewsService) { }
 
@@ -23,6 +24,11 @@ export class ReaderComponent implements OnInit {
   public test2(article, event){
     console.log(article);
     event.stopPropagation();
+  }
+
+  showSaveLater(index){
+    console.log(index);
+    this.currentItem = index;
   }
 
 }
