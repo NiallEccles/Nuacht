@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { OverlayService } from "src/app/services/overlay/overlay.service";
 import { DrawerService } from "src/app/services/drawer/drawer.service";
-import { timer } from 'rxjs';
+import { timer } from "rxjs";
 
 @Component({
   selector: "app-drawer",
@@ -14,43 +14,51 @@ export class DrawerComponent implements OnInit {
   public categories = [
     {
       id: 0,
-      name: "Read Later",
-      icon: "watch_later"
-    },
-    {
-      id: 0,
       name: "All",
-      icon: "dynamic_feed"
+      icon: "dynamic_feed",
+      endpoint: "/"
     },
     {
       id: 1,
-      name: "Business",
-      icon: "business"
+      name: "Starred",
+      icon: "star",
+      endpoint: "/starred"
     },
     {
       id: 2,
-      name: "Entertainment",
-      icon: "local_activity"
+      name: "Business",
+      icon: "business",
+      endpoint: "/category/business"
     },
     {
       id: 3,
-      name: "Health",
-      icon: "local_hospital"
+      name: "Entertainment",
+      icon: "local_activity",
+      endpoint: "/category/entertainment"
     },
     {
       id: 4,
-      name: "Science",
-      icon: "category"
+      name: "Health",
+      icon: "local_hospital",
+      endpoint: "/category/health"
     },
     {
       id: 5,
-      name: "Sports",
-      icon: "sports_volleyball"
+      name: "Science",
+      icon: "category",
+      endpoint: "/category/science"
     },
     {
       id: 6,
+      name: "Sports",
+      icon: "sports_volleyball",
+      endpoint: "/category/sports"
+    },
+    {
+      id: 7,
       name: "Technology",
-      icon: "photo_camera"
+      icon: "photo_camera",
+      endpoint: "/category/technology"
     }
   ];
 
@@ -64,7 +72,7 @@ export class DrawerComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(localStorage.getItem("settings")){
+    if (localStorage.getItem("settings")) {
       this.isClosed = JSON.parse(localStorage.getItem("settings")).find(
         i => i.name === "Minimal"
       ).value;
@@ -94,10 +102,10 @@ export class DrawerComponent implements OnInit {
       ).value
     );
   }
-  public setHover(event){
+  public setHover(event) {
     this.activeHover = event.toElement.id;
   }
-  public clearHover(){
+  public clearHover() {
     this.activeHover = "";
   }
 }

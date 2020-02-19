@@ -1,16 +1,21 @@
 <div class="reader">
+  <h2>All News</h2>
   <ol>
-    <li *ngFor="let article of data; let i = index" (click)="test1(article)">
-      <article>
-        <div class="content">
-          <h2>{{ article.title | removeSrc }}</h2>
-          <h3>{{ article.source.name }}</h3>
-        </div>
-        <div class="tooltip trailing">
-          <i class="material-icons" (click)="test2(article, $event)">watch_later</i>
-          <!-- <span class="tooltiptext">Read Later</span> -->
-        </div>
-      </article>
+    <li *ngFor="let article of data; let i = index">
+      <a [href]="article.url" target="_blank">
+        <article>
+          <div class="content">
+            <h2>{{ article.title | removeSrc }}</h2>
+            <h3>{{ article.source.name }}</h3>
+          </div>
+          <div class="tooltip trailing">
+            <i class="material-icons" (click)="addToStarred(article, $event)"
+              >star</i
+            >
+            <!-- <span class="tooltiptext">Read Later</span> -->
+          </div>
+        </article>
+      </a>
     </li>
   </ol>
 </div>

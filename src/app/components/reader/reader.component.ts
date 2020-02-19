@@ -1,34 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { NewsService } from 'src/app/services/news/news.service';
+import { Component, OnInit } from "@angular/core";
+import { NewsService } from "src/app/services/news/news.service";
+import { StarredService } from "src/app/services/starred/starred.service";
 
 @Component({
-  selector: 'app-reader',
-  templateUrl: './reader.component.html',
-  styleUrls: ['./reader.component.scss']
+  selector: ".app-reader",
+  templateUrl: "./reader.component.html",
+  styleUrls: ["./reader.component.scss"]
 })
 export class ReaderComponent implements OnInit {
-
   public data;
   public currentItem;
 
-  constructor(public newsService: NewsService) { }
+  constructor(
+    public newsService: NewsService,
+    public starredService: StarredService
+  ) {}
 
   ngOnInit() {
     this.data = this.newsService.getNews();
   }
 
-  public test1(article){
-    console.log(article);
-  }
-
-  public test2(article, event){
-    console.log(article);
+  public addToStarred(article, event) {
     event.stopPropagation();
+    event.preventDefault();
+    this.starredService.updateStarred(article);
   }
-
-  showSaveLater(index){
-    console.log(index);
-    this.currentItem = index;
-  }
-
 }
