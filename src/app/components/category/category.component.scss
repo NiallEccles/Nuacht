@@ -7,6 +7,9 @@
     overflow-y: scroll;
     height: calc(100vh - 2em);
     font-family: "Montserrat", sans-serif;
+    h2{
+      color: var(--button);
+    }
     a{
       color: var(--button-text);
       text-decoration: none;
@@ -16,6 +19,9 @@
       margin: 0;
       padding: 0;
       width: 100%;
+      h2{
+        color: white;
+      }
       li {
         background: var(--headline);
         color: var(--button-text);

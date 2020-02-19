@@ -12,6 +12,7 @@ import { ReaderComponent } from './components/reader/reader.component';
 import { RemoveSrc } from './pipes/removeSrc.pipe';
 import { StarredComponent } from './components/starred/starred.component';
 import { CategoryComponent } from './components/category/category.component';
+import { MessageComponent } from './components/message/message.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CategoryComponent } from './components/category/category.component';
     ReaderComponent,
     RemoveSrc,
     StarredComponent,
-    CategoryComponent
+    CategoryComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,

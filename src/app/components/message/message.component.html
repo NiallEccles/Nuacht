@@ -1,0 +1,18 @@
+<div class="ui-message-container">
+  <div class="container-fluid" *ngIf="messages.length > 0">
+    <div class="row alert-container" *ngFor="let message of messages">
+      <div class="col-xs-12 text-right">
+        <div
+          [ngClass]="get_classes(message)"
+          role="alert"
+          (click)="remove(message)"
+        >
+          <i class="material-icons" *ngIf="message.type === 'success'">done</i>
+          <i class="material-icons" *ngIf="message.type === 'danger'">block</i>
+          <i class="material-icons" *ngIf="message.type === 'warning'">info</i>
+          {{ message.text }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
