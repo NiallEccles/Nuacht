@@ -365,14 +365,13 @@ export class NewsService {
   constructor(public preferenceService: PreferencesService) {
     this.filters = this.preferenceService.getStorage("filters");
     console.log(this.news);
-    
   }
 
   public getNews() {
     const filtered = [];
     this.news.articles.filter(article => {
       return this.filters.filter(filter => {
-        if(!filter.blocked){
+        if (!filter.blocked) {
           if (article.source.name === filter.name) {
             filtered.push(article);
           }
