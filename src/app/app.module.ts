@@ -10,6 +10,8 @@ import { ToggleComponent } from './components/toggle/toggle.component';
 import { PreferencesService } from './services/preferences/preferences.service';
 import { ReaderComponent } from './components/reader/reader.component';
 import { RemoveSrc } from './pipes/removeSrc.pipe';
+import { StarredComponent } from './components/starred/starred.component';
+import { CategoryComponent } from './components/category/category.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { RemoveSrc } from './pipes/removeSrc.pipe';
     SwitchComponent,
     ToggleComponent,
     ReaderComponent,
-    RemoveSrc
+    RemoveSrc,
+    StarredComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
