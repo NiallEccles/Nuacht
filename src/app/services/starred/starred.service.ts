@@ -1,10 +1,12 @@
 import { Injectable } from "@angular/core";
+import { MessageService } from "../message/message.service";
+import { IMessageType } from "../message/message";
 
 @Injectable({
   providedIn: "root"
 })
 export class StarredService {
-  constructor() {}
+  constructor(private messageService: MessageService) {}
 
   public async updateStarred(starredItem) {
     if (localStorage.getItem("starred")) {
@@ -12,11 +14,21 @@ export class StarredService {
       if (!this.containsObject(starredItem, starredItems)) {
         starredItems.push(starredItem);
         localStorage.setItem("starred", JSON.stringify(starredItems));
+        this.messageService.add({
+          text: "Starred",
+          type: IMessageType.Success
+        });
+      } else {
+        this.messageService.add({
+          text: "Already in Starred",
+          type: IMessageType.Warning
+        });
       }
     } else {
       const initStarred = [];
       initStarred.push(starredItem);
       localStorage.setItem("starred", JSON.stringify(initStarred));
+      this.messageService.add({ text: "Starred", type: IMessageType.Success });
     }
   }
 
@@ -42,6 +54,7 @@ export class StarredService {
     }
     starredItems.splice(index, 1);
     localStorage.setItem("starred", JSON.stringify(starredItems));
+    this.messageService.add({ text: "Removed", type: IMessageType.Success });
   }
 
   public containsObject(obj, list) {

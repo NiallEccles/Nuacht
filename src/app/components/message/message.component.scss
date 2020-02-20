@@ -16,7 +16,8 @@
 }
 
 .alert{
-  background:var(--headline);
+  // background:var(--headline);
+  background: var(--button);
   color: var(--button-text);
   display: flex;
   align-items: center;
