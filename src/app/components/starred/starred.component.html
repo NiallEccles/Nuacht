@@ -2,7 +2,7 @@
   <h2>Starred</h2>
   <h3 *ngIf="starred.length == 0">No Starred Links.</h3>
   <ol>
-    <li *ngFor="let article of starred; let i = index">
+    <li *ngFor="let article of starred?.slice()?.reverse(); let i = index">
       <a [href]="article.url" target="_blank">
         <article>
           <div class="content">
@@ -13,7 +13,6 @@
             <i class="material-icons" (click)="removeStarred(article, $event)"
               >remove_circle</i
             >
-            <!-- <span class="tooltiptext">Read Later</span> -->
           </div>
         </article>
       </a>

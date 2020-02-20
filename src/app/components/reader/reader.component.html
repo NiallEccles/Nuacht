@@ -1,5 +1,6 @@
 <div class="reader">
   <h2>All News</h2>
+  <h3 *ngIf="data.fallback">API Error. Displaying fallback news.</h3>
   <ol>
     <li *ngFor="let article of data; let i = index">
       <a [href]="article.url" target="_blank">

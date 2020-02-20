@@ -16,7 +16,7 @@
   <hr />
   <div class="inner">
     <ol>
-      <li *ngFor="let category of categories; let i = index" (mouseenter)="setHover($event)" [id]="category.name" (mouseleave)="clearHover()" [routerLink]="[category.endpoint]">
+      <li *ngFor="let category of categories; let i = index" (mouseenter)="setHover($event)" [id]="category.name" (mouseleave)="clearHover()" [routerLink]="[category.endpoint]" (click)="closeMenu()">
         <span *ngIf="!isClosed">{{ category.name }}</span>
         <i *ngIf="!isClosed" class="material-icons">
           keyboard_arrow_right

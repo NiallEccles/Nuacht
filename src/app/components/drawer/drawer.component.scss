@@ -61,6 +61,7 @@
       }
       .leading-menu {
         display: none;
+        cursor: pointer;
         @media (max-width: 800px) {
           display: inline;
         }

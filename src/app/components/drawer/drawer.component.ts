@@ -89,7 +89,7 @@ export class DrawerComponent implements OnInit {
   }
 
   public toggleDrawer() {
-    if (this.isMobile()) {
+    if (!this.isMobile()) {
       this.isClosed = !this.isClosed;
     }
   }

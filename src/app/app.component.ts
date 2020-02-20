@@ -31,6 +31,5 @@ export class AppComponent implements OnInit {
     } else {
       this.themeService.toggleTheme(false);
     }
-    this.newsService.getNews();
   }
 }

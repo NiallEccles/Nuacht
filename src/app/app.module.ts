@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,7 @@ import { RemoveSrc } from './pipes/removeSrc.pipe';
 import { StarredComponent } from './components/starred/starred.component';
 import { CategoryComponent } from './components/category/category.component';
 import { MessageComponent } from './components/message/message.component';
+import { MessageService } from './services/message/message.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { MessageComponent } from './components/message/message.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [PreferencesService],
   bootstrap: [AppComponent]

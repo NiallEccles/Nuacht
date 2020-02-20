@@ -1,11 +1,13 @@
 import { Injectable } from "@angular/core";
 import { PreferencesService } from "../preferences/preferences.service";
+import { environment } from "src/environments/environment";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: "root"
 })
 export class NewsService {
-  private news = {
+  private news: any = {
     status: "ok",
     totalResults: 38,
     articles: [
@@ -362,22 +364,34 @@ export class NewsService {
     ]
   };
   private filters;
-  constructor(public preferenceService: PreferencesService) {
+  constructor(
+    public preferenceService: PreferencesService,
+    private http: HttpClient
+  ) {
     this.filters = this.preferenceService.getStorage("filters");
-    console.log(this.news);
   }
 
-  public getNews() {
+  public getNews(category: string = "") {
     const filtered = [];
-    this.news.articles.filter(article => {
-      return this.filters.filter(filter => {
-        if (!filter.blocked) {
-          if (article.source.name === filter.name) {
-            filtered.push(article);
-          }
-        }
+    this.http
+      .get(
+        `http://newsapi.org/v2/top-headlines?country=ie${
+          category.length > 0 ? "&category=" + category : ''
+        }&apiKey=${environment.news}`
+      )
+      .subscribe(data => {
+        console.log(data);
+        this.news = data;
+        this.news.articles.filter(article => {
+          return this.filters.filter(filter => {
+            if (!filter.blocked) {
+              if (article.source.name === filter.name) {
+                filtered.push(article);
+              }
+            }
+          });
+        });
       });
-    });
     return filtered;
   }
 }
