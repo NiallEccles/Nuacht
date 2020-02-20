@@ -1,4 +1,7 @@
-.alignment{
-    display: flex;
-    flex-direction: row;
+.alignment {
+  display: flex;
+  flex-direction: row;
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
 }

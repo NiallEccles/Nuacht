@@ -11,6 +11,7 @@ import { timer } from "rxjs";
 export class DrawerComponent implements OnInit {
   public activeHover: string;
   public isClosed: boolean;
+  public mobileMenu: boolean;
   public categories = [
     {
       id: 0,
@@ -67,22 +68,30 @@ export class DrawerComponent implements OnInit {
     public drawerService: DrawerService
   ) {
     this.drawerService.drawerStatus().subscribe(data => {
-      this.isClosed = data;
+      if (!this.isMobile()) {
+        this.isClosed = data;
+      }
     });
   }
 
   ngOnInit() {
-    if (localStorage.getItem("settings")) {
-      this.isClosed = JSON.parse(localStorage.getItem("settings")).find(
-        i => i.name === "Minimal"
-      ).value;
+    if (!this.isMobile()) {
+      if (localStorage.getItem("settings")) {
+        this.isClosed = JSON.parse(localStorage.getItem("settings")).find(
+          i => i.name === "Minimal"
+        ).value;
+      } else {
+        this.isClosed = false;
+      }
     } else {
       this.isClosed = false;
     }
   }
 
   public toggleDrawer() {
-    this.isClosed = !this.isClosed;
+    if (this.isMobile()) {
+      this.isClosed = !this.isClosed;
+    }
   }
 
   public openOverlay() {
@@ -102,10 +111,28 @@ export class DrawerComponent implements OnInit {
       ).value
     );
   }
+
   public setHover(event) {
     this.activeHover = event.toElement.id;
   }
+
   public clearHover() {
     this.activeHover = "";
+  }
+
+  public isMobile(): boolean {
+    if (document.body.getBoundingClientRect().width >= 800) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  public openMenu() {
+    this.mobileMenu = !this.mobileMenu;
+  }
+
+  public closeMenu() {
+    this.mobileMenu = false;
   }
 }

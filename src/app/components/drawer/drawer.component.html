@@ -1,4 +1,4 @@
-<div class="container" [ngClass]="{ close: isClosed }">
+<div class="container" [ngClass]="{ close: isClosed, mobile: mobileMenu }">
   <div class="title">
     <h1 *ngIf="!isClosed">Nuacht</h1>
     <h1 *ngIf="isClosed">N</h1>
@@ -6,6 +6,11 @@
       <i class="material-icons" (click)="openOverlay()">
         settings
       </i>
+      <div class="leading-menu">
+        <i class="material-icons" (click)="openMenu()">
+          menu
+        </i>
+      </div>
     </div>
   </div>
   <hr />
