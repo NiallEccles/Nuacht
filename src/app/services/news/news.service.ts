@@ -380,7 +380,6 @@ export class NewsService {
         }&apiKey=${environment.news}`
       )
       .subscribe(data => {
-        console.log(data);
         this.news = data;
         this.news.articles.filter(article => {
           return this.filters.filter(filter => {

@@ -15,6 +15,8 @@ import { StarredComponent } from './components/starred/starred.component';
 import { CategoryComponent } from './components/category/category.component';
 import { MessageComponent } from './components/message/message.component';
 import { MessageService } from './services/message/message.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { MessageService } from './services/message/message.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [PreferencesService],
   bootstrap: [AppComponent]

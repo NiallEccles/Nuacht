@@ -1,3 +1,4 @@
+<div *ngIf="updateAvailable" class="update"><p>A new version is available.<button (click)="update()">Update</button></p></div>
 <app-overlay *ngIf="overlayOpen"></app-overlay>
 <div class="message"></div>
 <div class="alignment">

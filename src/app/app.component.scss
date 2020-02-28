@@ -5,3 +5,22 @@
     flex-direction: column;
   }
 }
+
+.update {
+  position: fixed;
+  z-index: 3;
+  background: var(--button);
+  width: 100%;
+  padding: 1em;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  button {
+    padding: 0.5em 1em;
+    border: none;
+    background: white;
+    color: var(--button);
+    font-size: 1em;
+    margin-left: 1em;
+    cursor: pointer;
+  }
+}

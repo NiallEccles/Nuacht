@@ -5,7 +5,6 @@
         <div
           [ngClass]="get_classes(message)"
           role="alert"
-          (click)="remove(message)"
         >
           <i class="material-icons" *ngIf="message.type === 'success'">done</i>
           <i class="material-icons" *ngIf="message.type === 'danger'">block</i>
