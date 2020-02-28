@@ -375,7 +375,7 @@ export class NewsService {
     const filtered = [];
     this.http
       .get(
-        `http://newsapi.org/v2/top-headlines?country=ie${
+        `https://newsapi.org/v2/top-headlines?country=ie${
           category.length > 0 ? "&category=" + category : ''
         }&apiKey=${environment.news}`
       )
