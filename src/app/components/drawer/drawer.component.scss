@@ -11,7 +11,8 @@
     position: fixed;
     width: calc(100vw - 2em);
     height: 3em;
-    top: calc(100vh - 4.3em);
+    // top: calc(100vh - 4.3em);
+    bottom: -0.8em;
   }
   &.mobile {
     @media (max-width: 800px) {
